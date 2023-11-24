@@ -11,7 +11,7 @@ route.post("/register", (req, res) => {
     arr.push(regData)
     const token = jwt.sign({ user: regData.email }, secretKey, { expiresIn: 36000 })
     console.log(regData);
-    return res.send({ msg: `user registered successfully with token ${token}` })
+    return res.send({ msg: `user registered successfully`, JWT :`${token}` })
 })
 
 route.post("/login", (req, res) => {
