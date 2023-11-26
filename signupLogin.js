@@ -11,7 +11,7 @@ route.post("/register", (req, res) => {
     arr.push(regData)
     const token = jwt.sign({ user: regData.email }, secretKey, { expiresIn: 36000 })
     console.log(regData);
-    return res.send({ msg: `user registered successfully`, JWT :`${token}` })
+    return res.send({ msg: `user registered successfully`, JWT: `${token}` })
 })
 
 route.post("/login", (req, res) => {
@@ -22,9 +22,8 @@ route.post("/login", (req, res) => {
 
     const validate = bcrypt.compareSync(loginData.pass, findAcc)
     if (validate)
-        return res.send({ msg: "User successfully registered" })
+        return res.send({ msg: "User successfully logged in" })
 
     return res.send({ msg: "User details doesn't match" })
 })
-
 module.exports = route
