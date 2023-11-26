@@ -20,7 +20,7 @@ route.post("/login", (req, res) => {
     if (!findAcc)
         return res.send({ msg: "User has not registered, please try again" })
 
-    const validate = bcrypt.compareSync(loginData.pass, findAcc)
+    const validate = bcrypt.compareSync(loginData.pass, findAcc.pass)
     if (validate)
         return res.send({ msg: "User successfully logged in" })
 
